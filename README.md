@@ -21,12 +21,12 @@ At this moment has debug functionality and ability to remind you of how poor you
 
 
 ## How to set up the project for development?
-###Server setup
+### Server setup
 1. Go to https://discord.com/developers ;
 2. Get yourself a bot and invite it to your server. (Covered in tutorial linked below);
 3. Remember to grant it all intents, otherwise you might get permission issues;
 
-###Dev environment setup
+### Dev environment setup
 1. Install VS Studio 2022:
 	* Select .NET desktop development workload in the installer.
 2. (Optional) Install Git client like sourcetree or Git CLI;
