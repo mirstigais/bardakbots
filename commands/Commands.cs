@@ -1,7 +1,7 @@
 ﻿using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 
-namespace Bardakbots.commands
+namespace Bardakbots.Commands
 {
     internal class Commands : BaseCommandModule
     {

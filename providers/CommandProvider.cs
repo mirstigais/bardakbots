@@ -1,21 +1,20 @@
 ﻿using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
-using Bardakbots.commands;
 
-namespace Bardakbots.providers
+namespace Bardakbots.Provider
 {
     public class CommandProvider
     {
-        public CommandsNextExtension Commands;
+        public CommandsNextExtension coreCommands;
 
         public CommandProvider(CommandsNextExtension commandsNextExtension)
         {
-            Commands = commandsNextExtension;
+            coreCommands = commandsNextExtension;
         }
 
         public void RegisterCommands()
         {
-            Commands.RegisterCommands<Commands>();
+            coreCommands.RegisterCommands<Commands.Commands>();
+            coreCommands.RegisterCommands<Modules.Bank.Commands.Commands>();
         }
     }
 }

@@ -1,16 +1,15 @@
-﻿
-using DSharpPlus;
+﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
-using Bardakbot.config;
+using Bardakbot.Config;
 using DSharpPlus.EventArgs;
-using Bardakbots.providers;
+using Bardakbots.Provider;
 
 namespace BardakBots
 {
     class Bot
     {
-        private static DiscordClient Client { get; set; }
-        private static CommandsNextExtension Commands {get; set;}
+        private static DiscordClient client { get; set; }
+        private static CommandsNextExtension commands {get; set;}
 
         static async Task Main(String[] args)
         {
@@ -24,9 +23,9 @@ namespace BardakBots
                 AutoReconnect = true
             };
 
-            Client = new DiscordClient(disocrdConfig);
+            client = new DiscordClient(disocrdConfig);
 
-            Client.Ready += Client_Ready;
+            client.Ready += Client_Ready;
 
             var commandsConfig = new CommandsNextConfiguration()
             {
@@ -36,12 +35,14 @@ namespace BardakBots
                 EnableDefaultHelp = false,
             };
 
-            Commands = Client.UseCommandsNext(commandsConfig);
+            commands = client.UseCommandsNext(commandsConfig);
 
-            CommandProvider commandProvider = new CommandProvider(Commands);
+            CommandProvider commandProvider = new CommandProvider(commands);
             commandProvider.RegisterCommands();
+            EventProvider eventProvider = new EventProvider(client);
+            eventProvider.RegisterEvents();
 
-            await Client.ConnectAsync();
+            await client.ConnectAsync();
             await Task.Delay(-1);
         }
 
