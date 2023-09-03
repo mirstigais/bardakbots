@@ -1,6 +1,7 @@
 ﻿using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.CommandsNext;
 using Bardakbots.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bardakbots.Modules.Bank.Commands
 {
@@ -37,7 +38,8 @@ namespace Bardakbots.Modules.Bank.Commands
             {
                 if (bAccount != null)
                 {
-                    bAccount.Bilance += validAmount;
+                    bAccount.addMoney(validAmount);
+                    dbContext.SaveChanges();
                     await ctx.Channel.SendMessageAsync($"Added 💸 to your account: {validAmount}");
                 }
                 else
@@ -61,7 +63,8 @@ namespace Bardakbots.Modules.Bank.Commands
             {
                 if (bAccount != null)
                 {
-                    bAccount.Bilance -= validAmount;
+                    bAccount.subtractMoney(validAmount);
+                    dbContext.SaveChanges();
                     await ctx.Channel.SendMessageAsync($"Removed 💸 from your account: {validAmount}");
                 }
                 else

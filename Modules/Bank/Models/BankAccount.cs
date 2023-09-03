@@ -23,12 +23,12 @@ namespace Bardakbots.module.bank.model
             return this.Bilance < amount;
         }
 
-        public void subtract(double amount)
+        public void subtractMoney(double amount)
         {
             this.Bilance -= amount;
         }
 
-        public void Add(double amount)
+        public void addMoney(double amount)
         {
             this.Bilance += amount;
         }
